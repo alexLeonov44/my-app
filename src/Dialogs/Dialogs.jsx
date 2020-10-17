@@ -1,39 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import classes from './Dialogs.module.css';
+import DialogsItems from './DialogsItem/DialogsItem'
+import Message from './Message/Message'
 
-const DialogsItems = (props) => {
-    return (
-        <div className={classes.dialog}>
-            <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
-        </div>
-    )
 
-}
 
-const Message = (props) => {
-    return (
-        <div className={classes.message}>{props.message}</div>
-    )
 
-}
 
-let dialogsData = [
-    { id: 1, name: 'Alex' },
-    { id: 2, name: 'Petra' },
-    { id: 3, name: 'Vano' },
-]
 
-let messagesData = [
-    { message: 'hey from props alex' },
-    { message: 'real fanny petra' },
-    { message: 'fuck you vano' },
-]
 
-let dialogsElement = dialogsData.map(d => <DialogsItems name={d.name} id={d.id} />)  //метод мап функия прог по циклу 
-let messagesElement = messagesData.map(m => <Message message={m.message} />)
 
-const Dialogs = () => {
+const Dialogs = (props) => {
+    let dialogsElement = props.dialogsData.map(d => <DialogsItems name={d.name} id={d.id} />)  //метод мап функия прог по циклу 
+    let messagesElement = props.messagesData.map(m => <Message message={m.message} />)
     return (
         <div className={classes.dialogs}>
 
