@@ -1,14 +1,13 @@
 import { rerenderEntireTree } from "../render"
 
-
-
 let state = {
     profilePage: {
         postData: [
-            { id:1, message: 'hi first post', age: 23 },
-            { id:2,message: 'hi srcond post', age: 23 },
-            { id:3,message: 'its third post', age: 23 },
-        ]
+            { id: 1, message: 'hi first post', age: 23 },
+            { id: 2, message: 'hi srcond post', age: 23 },
+            { id: 3, message: 'its third post', age: 23 },
+        ],
+        newPostText:''
     },
     dialogsPage: {
         dialogsData: [
@@ -24,14 +23,19 @@ let state = {
     }
 }
 
-export let addPosts =(postMessage)=>{
-   let newPost ={
-       id:4,
-       message:postMessage,
-       age:29
-   }
-   state.profilePage.postData.push(newPost)
-   rerenderEntireTree(state,addPosts)
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 4,
+        message:state.profilePage.newPostText ,
+        age: 2
+    }
+    state.profilePage.postData.push(newPost)
+    rerenderEntireTree(state)
+}
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
 }
 
 export default state

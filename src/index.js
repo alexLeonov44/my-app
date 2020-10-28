@@ -1,7 +1,7 @@
 import './index.css';
-import state, { addPosts } from './Redux/state';
+import state  from './Redux/state';
 import { rerenderEntireTree } from './render';
 
 
-rerenderEntireTree(state,addPosts)
+rerenderEntireTree(state)
 
